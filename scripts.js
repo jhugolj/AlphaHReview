@@ -9,7 +9,7 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
 
         var label = document.createElement('label');
         label.setAttribute('for', 'criteria' + numberOfCriteria);
-        label.innerHTML = '<strong>Criteria ' + numberOfCriteria +"  " + '</strong>';
+        label.innerHTML = '<strong>Criteria ' + numberOfCriteria +' ' + '</strong>';
 
         var input = document.createElement('input');
         input.setAttribute('class', 'criteria');
@@ -17,7 +17,7 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
         input.setAttribute('name', 'criteria' + numberOfCriteria);
         input.setAttribute('id', 'criteria' + numberOfCriteria);
         input.setAttribute('required', 'true');
-        input.setAttribute('placeholder', 'Type the name of criterion' +" "+ numberOfCriteria);
+        input.setAttribute('placeholder', 'Type the name of criterion' +' '+ numberOfCriteria);
 
 
         div.appendChild(label);
