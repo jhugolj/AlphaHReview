@@ -12,6 +12,7 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
         label.innerHTML = '<strong>Criteria ' + numberOfCriteria +"  " + '</strong>';
 
         var input = document.createElement('input');
+        input.setAttribute('class', 'criteria');
         input.setAttribute('type', 'text');
         input.setAttribute('name', 'criteria' + numberOfCriteria);
         input.setAttribute('id', 'criteria' + numberOfCriteria);
