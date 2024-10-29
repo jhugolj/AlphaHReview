@@ -9,12 +9,12 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
 
         var label = document.createElement('label');
         label.setAttribute('for', 'criteria' + numberOfCriteria);
-        label.innerHTML = '<strong>Criteria ' + numberOfCriteria +' ' + '</strong>';
+        label.innerHTML = '<strong>Criterion ' + numberOfCriteria +' ' + '</strong>';
 
         var input = document.createElement('input');
         input.setAttribute('class', 'criteria');
         input.setAttribute('type', 'text');
-        input.setAttribute('name', 'criterion' + numberOfCriteria);
+        input.setAttribute('name', 'criteria' + numberOfCriteria);
         input.setAttribute('id', 'criteria' + numberOfCriteria);
         input.setAttribute('required', 'true');
         input.setAttribute('placeholder', 'Type the name of criterion '+ numberOfCriteria);
