@@ -28,8 +28,8 @@ h1, h2, h3 {
 
 input, .uploadFile {
     border: 1px solid #1b6828;
-    padding: 6px;
-    border-radius: 4px;
+    padding: 4px;
+    border-radius: 5px;
 }
 
 .input-criteria {
@@ -84,7 +84,7 @@ table, .table-comparison, #ahpTable {
 
 #criterias, p, span, .small-text, .criteria {
     font-size: smaller;
-    margin: 5px 0;
+    margin: 2px 0;
 }
 
 th, td {
