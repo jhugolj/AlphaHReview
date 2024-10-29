@@ -16,7 +16,7 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
         input.setAttribute('name', 'criteria' + numberOfCriteria);
         input.setAttribute('id', 'criteria' + numberOfCriteria);
         input.setAttribute('required', 'true');
-        input.setAttribute('placeholder', 'Insert Criteria ' + numberOfCriteria + ' name');
+        input.setAttribute('placeholder', 'Type the name of criterion' + numberOfCriteria +);
 
 
         div.appendChild(label);
