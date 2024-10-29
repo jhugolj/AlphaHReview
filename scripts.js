@@ -1,4 +1,4 @@
-//STEP 1- Adicionar ou remover Critérios
+//STEP 1- Add ou Remove Criteria
 document.getElementById('addCriteriaBtn').addEventListener('click', function() {
     var criteriaInputsContainer = document.getElementById('criteriaInputs');
     var numberOfCriteria = criteriaInputsContainer.children.length + 1;
@@ -14,7 +14,7 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
         var input = document.createElement('input');
         input.setAttribute('class', 'criteria');
         input.setAttribute('type', 'text');
-        input.setAttribute('name', 'criteria' + numberOfCriteria);
+        input.setAttribute('name', 'criterion' + numberOfCriteria);
         input.setAttribute('id', 'criteria' + numberOfCriteria);
         input.setAttribute('required', 'true');
         input.setAttribute('placeholder', 'Type the name of criterion '+ numberOfCriteria);
