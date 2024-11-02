@@ -28,8 +28,8 @@ h1, h2, h3 {
 
 input, .uploadFile {
     border: 1px solid #1b6828;
-    padding: 4px;
-    border-radius: 5px;
+    padding: 6px;
+    border-radius: 4px;
 }
 
 .input-criteria {
@@ -84,7 +84,7 @@ table, .table-comparison, #ahpTable {
 
 #criterias, p, span, .small-text, .criteria {
     font-size: smaller;
-    margin: 2px 0;
+    margin: 5px 0;
 }
 
 th, td {
@@ -219,4 +219,35 @@ hr {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+}
+
+#resultsTable td:nth-child(4) {
+    border-right: 2px solid #adadad;
+}
+
+#resultsTable tr:first-child, #resultsTable tr:first-child {
+    background-color: #1b6828;
+    color: white;
+}
+
+#resultsTable tr:nth-last-child(3) td {
+    border-bottom: 1px solid #1b6828;
+}
+
+#resultsTable  tr:nth-last-child(1) td {
+    border-bottom: 2px solid #1b6828;
+}
+
+
+#resultsWT td:nth-child(4) {
+    border-right: 2px solid #1b6828;
+}
+
+#resultsWT tr:first-child, #resultsWT tr:first-child {
+    background-color: #1b6828;
+    color: white;
+}
+
+#resultsWT tr:nth-last-child(1) td {
+    border-bottom: 2px solid #1b6828;
 }
