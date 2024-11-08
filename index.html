@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" description="AlphaHReview Methodology">
 <head>
+
     <title>AlphaHReview Methodology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
-       
+           
 </head>
 <body>
     <header>
@@ -15,7 +16,7 @@
 
     <div class="campo justificado">
         <p>
-            This methodology was developed with the aim of prioritizing publication selection criteria and exposing alternatives to improve the systematic literature review method. The AHP tool is used as a methodology to classify the quality criteria of the most relevant publications for the researched topic. Furthermore, the the Weitendorf ratios was used to consider and classify the most relevant publications for the researched topic.
+            This methodology was developed with the aim of prioritizing publication selection criteria and exposing alternatives to improve the systematic literature review method. The AHP tool is used as a methodology to classify the quality criteria of the most relevant publications for the researched topic. Furthermore, the Weitendorf ratios was used to consider and classify the most relevant publications for the researched topic.
         </p>
     </div>
     <hr>
@@ -23,7 +24,7 @@
         <div class="campo">
             <h3 href="#step1"><strong>STEP 1 - Define the Criteria</strong></h3>
             <p>Type the names of the criteria to be used in your search in the text boxes.</p>
-            <span class="small-text">(You can use 3 to 5 criteria.)</span>
+            <span class="small-text">(You can use 3 to 5 criteria).</span>
          <div class="campo" id="buttons">
          <div class="campo" id="criteriaInputs">
           <!-- Initial input boxes will be added here -->
@@ -40,8 +41,8 @@
             <input class="criteria" type="text" name="criteria3" id="criteria3" placeholder="Publication Year" required>
            </div>
         </div>
-         <button type="button" id="addCriteriaBtn" class="button">Add Criterion</button>&nbsp
-         <button type="button" id="removeCriteriaBtn" class="button">Remove Criterion</button>&nbsp&nbsp&nbsp
+         <button type="button" id="addCriteriaBtn" class="button">Add Criteria</button>&nbsp
+         <button type="button" id="removeCriteriaBtn" class="button">Remove Criteria</button>&nbsp&nbsp&nbsp
         </div>
         <button type="submit" class="stepbutton">Submit</button>
         </div>
@@ -79,7 +80,7 @@
                             <!-- As linhas da tabela serão geradas dinamicamente aqui -->
                         </tbody>
                     </table>
-    
+    <p style="align-self: center;">For the same Weights just Click Here!</p>
                     <button class="stepbutton" id="pairwiseBtn" type="button">Pairwise Comparison</button>
                 </form>
             </div>
@@ -99,7 +100,7 @@
             <h3><strong>STEP 3 - Criteria Analysis</strong></h3>
             <p>In this field, the analysis and classification of the criteria will be carried out.</p>
             <div class="campo"><p><strong>3.1 - Download the criteria table:</strong></p>
-            <button class="download-btn" onclick="downloadCriteriaTable()">Download Criteria Table</button>
+                <button class="download-btn" onclick="downloadCriteriaTable()">Download Criteria Table</button>
             <p><strong>3.2 - Criteria Analysis</strong></p>
             <section id="step-3.2">
                 <input type="file" id="uploadFile" class="uploadFile" accept=".odt, .xls, .xlsx, .csv" title="Select File">
@@ -120,11 +121,11 @@
                         </tr>
                         <tr class="gray-row">
                             <!-- Os nomes dos critérios serão preenchidos aqui dinamicamente -->
-                            <td>Wainting Criterion Name</td>
-                            <td>Wainting Criterion Name</td>
-                            <td>Wainting Criterion Name</td>
-                            <td></td>
-                            <td></td>
+                            <td>waiting for criterion name</td>
+                            <td>waiting for criterion name</td>
+                            <td>waiting for criterion name</td>
+                            <td>waiting for criterion name</td>
+                            <td>waiting for criterion name</td>
                         </tr>
                         <tr>
                             <!-- Os valores dos critérios serão preenchidos aqui dinamicamente -->
@@ -136,30 +137,30 @@
                         </tr>
                         <tr>
                             <td>
-                                <select id="criteria1Type">
+                                <select id="criteria1Type" required>
                                     <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option select>
+                                    <option value="maximum" style="text-align: center;">Maximum</option>
                                     <option value="minimum" style="text-align: center;">Minimum</option>
                                 </select>
                             </td>
                             <td>
-                                <select id="criteria2Type">
+                                <select id="criteria2Type" required>
                                     <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option select>
+                                    <option value="maximum" style="text-align: center;">Maximum</option>
                                     <option value="minimum" style="text-align: center;">Minimum</option>
                                 </select>
                             </td>
                             <td>
-                                <select id="criteria3Type">
+                                <select id="criteria3Type" required>
                                     <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option select>
+                                    <option value="maximum" style="text-align: center;">Maximum</option>
                                     <option value="minimum" style="text-align: center;">Minimum</option>
                                 </select>
                             </td>
                             <td>
                                 <select id="criteria4Type">
                                     <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option select>
+                                    <option value="maximum" style="text-align: center;">Maximum</option>
                                     <option value="minimum" style="text-align: center;">Minimum</option>
                                 </select>
                             </td>
@@ -186,6 +187,10 @@
             </div>
             <hr>
             <h3>Normalized Criteria Table</h3>
+            <table id="resultswT">
+             <!-- Tabela será preenchida dinamicamente -->
+            </table>
+            
             <div class="campo" id="resultsWT" style="display:none;"></div>
             </section>
 
@@ -194,12 +199,12 @@
     <hr>
     <div class="campo">
         <section id="step4">
-            <h3><strong>STEP 4 - Final Results</strong></h3>
-            <p>Show ranked results table here.</p>
-            <button id="buildRankTable" class="stepbutton">Build Rank Table</button>
-            <div id="ranktable" class="ranktable"></div>
-            <button id="finalButton" class="stepbutton">Download Results</button>
-        </section>
+    <h3><strong>STEP 4 - Final Results</strong></h3>
+    <p>Show ranked results table here.</p>
+    <button id="buildRankTable" class="stepbutton" onclick="buildRankTable()">Build Rank Table</button>
+        <div id="ranktable" class="ranktable"></div>
+    <button id="finalButton" class="stepbutton">Download Results</button>
+</section>
     </div>
     <hr>
     <footer>
@@ -208,8 +213,6 @@
     </footer>
     <script src="scripts.js"></script>
     
-    
 </body>
 
 </html>
-
