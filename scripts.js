@@ -1,4 +1,4 @@
-//STEP 1- Add ou Remove Criteria
+// STEP 1 - Adicionar ou remover Critérios
 document.getElementById('addCriteriaBtn').addEventListener('click', function() {
     var criteriaInputsContainer = document.getElementById('criteriaInputs');
     var numberOfCriteria = criteriaInputsContainer.children.length + 1;
@@ -9,7 +9,7 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
 
         var label = document.createElement('label');
         label.setAttribute('for', 'criteria' + numberOfCriteria);
-        label.innerHTML = '<strong>Criterion ' + numberOfCriteria +' ' + '</strong>';
+        label.innerHTML = '<strong>Criterion ' + numberOfCriteria +"  " + '</strong>';
 
         var input = document.createElement('input');
         input.setAttribute('class', 'criteria');
@@ -17,8 +17,7 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
         input.setAttribute('name', 'criteria' + numberOfCriteria);
         input.setAttribute('id', 'criteria' + numberOfCriteria);
         input.setAttribute('required', 'true');
-        input.setAttribute('placeholder', 'Type the name of criterion '+ numberOfCriteria);
-
+        input.setAttribute('placeholder', 'Insert Criteria ' + numberOfCriteria + ' name');
 
         div.appendChild(label);
         div.appendChild(input);
@@ -28,7 +27,7 @@ document.getElementById('addCriteriaBtn').addEventListener('click', function() {
     }
 });
 
-// Função para remover critérios dinamicamente
+// STEP 1 - Função para remover critérios dinamicamente
 document.getElementById('removeCriteriaBtn').addEventListener('click', function() {
     var criteriaInputsContainer = document.getElementById('criteriaInputs');
     var numberOfCriteria = criteriaInputsContainer.children.length;
@@ -40,8 +39,7 @@ document.getElementById('removeCriteriaBtn').addEventListener('click', function(
     }
 });
 
-
-// Ajuste após o envio dos critérios
+// STEP 1 - Ajuste após o envio dos critérios
 document.getElementById('criteriaForm').addEventListener('submit', function(event) {
     event.preventDefault();
     var criteriaInputsContainer = document.getElementById('criteriaInputs');
@@ -65,7 +63,7 @@ document.getElementById('criteriaForm').addEventListener('submit', function(even
     populateCriteriaNames(selectedCriteria);
 });
 
-// Função para popular os nomes dos critérios na segunda linha da ahpTable
+// STEP 1 - Função para popular os nomes dos critérios na segunda linha da ahpTable
 function populateCriteriaNames(criteriaNames) {
     const ahpTable = document.getElementById("ahpTable");
     const nameRow = ahpTable.querySelector('tr.gray-row');
@@ -76,7 +74,7 @@ function populateCriteriaNames(criteriaNames) {
     });
 }
 
-// Função para gerar linhas de comparação pareada
+// STEP 2 - Função para gerar linhas de comparação pareada
 function generateComparisonRows(criteriaList) {
     var comparisonRowsContainer = document.getElementById('comparisonRows');
     comparisonRowsContainer.innerHTML = '';
@@ -114,7 +112,7 @@ function generateComparisonRows(criteriaList) {
     document.getElementById('comparisonContainer').style.display = 'block';
 }
 
-// Função para calcular e preencher os pesos na terceira linha da tabela AHP
+// STEP 2 - Função para calcular e preencher os pesos na terceira linha da tabela AHP
 document.getElementById('pairwiseBtn').addEventListener('click', function() {
     var comparisonRowsContainer = document.getElementById('comparisonRows');
     var rows = comparisonRowsContainer.getElementsByTagName('tr');
@@ -157,7 +155,7 @@ document.getElementById('pairwiseBtn').addEventListener('click', function() {
     });
     
     var consistencyRatio = calculateConsistencyRatio(pairwiseMatrix, priorities);
-    var consistencyMessage = consistencyRatio <= 0.1 ? '<strong>Judgments ARE CONSISTENT. You can continue to the next step</strong>' : '<strong>The judgments are INCONSISTENT. Please REVIEW your comparisons.</strong>';
+    var consistencyMessage = consistencyRatio <= 0.1 ? '<strong>Judgments ARE CONSISTENT. You can SAVE COMPARISON and continue to the next step</strong>' : '<strong>The judgments are INCONSISTENT. Please REVIEW your comparisons before saving..</strong>';
     var consistencyMessageClass = consistencyRatio <= 0.1 ? 'consistent' : 'inconsistent';
 
     var consistencyLi = document.createElement('li');
@@ -167,7 +165,7 @@ document.getElementById('pairwiseBtn').addEventListener('click', function() {
     resultsContainer.style.display = 'flex';
 });
 
-// Função para popular os valores dos critérios na terceira linha da ahpTable
+// STEP 2 - Função para popular os valores dos critérios na terceira linha da ahpTable
 function populateCriteriaValues(criteriaValues) {
     const ahpTable = document.getElementById("ahpTable");
     const valueRow = ahpTable.rows[2];
@@ -178,7 +176,7 @@ function populateCriteriaValues(criteriaValues) {
     });
 }
 
-// Função para calcular a razão de consistência
+// STEP 2 - Função para calcular a razão de consistência
 function calculateConsistencyRatio(matrix, priorities) {
     var n = matrix.length;
     var lambdaMax = matrix.reduce((sum, row, i) => sum + row.reduce((rowSum, value, j) => rowSum + value * priorities[j], 0) / priorities[i], 0) / n;
@@ -190,8 +188,9 @@ function calculateConsistencyRatio(matrix, priorities) {
     return consistencyIndex / randomIndex[n];
 }
 
-//STEP3
 
+
+// STEP 3 - Função para processar e carregar o arquivo
 function processFile() {
     const fileInput = document.getElementById('uploadFile');
     const file = fileInput.files[0];
@@ -279,14 +278,25 @@ function processFile() {
                 const minLabelCell = minRow.insertCell();
                 minLabelCell.innerHTML = '<strong>Minimum</strong>';
             
-                columnValues.forEach((values) => {
+                columnValues.forEach((values, index) => {
                     const minCell = minRow.insertCell();
+                
                     if (values.length > 0) {
                         const min = Math.min(...values);
-                        const adjustedMin = min * 0.999; // Reduz 0,1% do valor mínimo
+                        
+                        // Obtém o tipo de otimização do critério para decidir o ajuste do mínimo
+                        const criteriaType = document.getElementById(`criteria${index + 1}Type`).value;
+                
+                        let adjustedMin;
+                        if (criteriaType === "minimum") {
+                            adjustedMin = min; // Não aplica o ajuste de 0,99 para minimum
+                        } else {
+                            adjustedMin = min * 0.999; // Aplica o ajuste de 0,1% do valor mínimo para maximização
+                        }
+                
                         minCell.textContent = adjustedMin.toFixed(3);
                     } else {
-                        minCell.textContent = '-';
+                        minCell.textContent = 'N/A';
                     }
                 });
             }
@@ -307,7 +317,7 @@ function processFile() {
     }
 }
 
-// Função para exibir os resultados normalizados
+// STEP 3 - Função para exibir os resultados normalizados
 function showMoreResults(columnValues, articleYearIndex) {
     const originalTable = document.getElementById('resultsTable');
     const numRows = originalTable.rows.length - 2; // Exclui as duas últimas linhas de máximo e mínimo
@@ -348,9 +358,20 @@ function showMoreResults(columnValues, articleYearIndex) {
                 const max = parseFloat(originalTable.rows[numRows].cells[cellIndex].textContent);
                 const min = parseFloat(originalTable.rows[numRows + 1].cells[cellIndex].textContent);
 
-                // Verifica se o valor é válido e calcula a normalização
+                // Obter o tipo de otimização do critério (maximum/minimum) baseado na escolha do usuário
+                const criteriaType = document.getElementById(`criteria${cellIndex - articleYearIndex}Type`).value;
+
+                // Verifica se o valor é válido e aplica a fórmula de acordo com o critério
                 if (!isNaN(originalValue) && !isNaN(max) && !isNaN(min) && max !== min) {
-                    newCell.textContent = ((originalValue - min) / (max - min)).toFixed(3);
+                    if (criteriaType === "maximum") {
+                        // Fórmula para maximização
+                        newCell.textContent = ((originalValue - min) / (max - min)).toFixed(3);
+                    } else if (criteriaType === "minimum") {
+                        // Fórmula para minimização
+                        newCell.textContent = ((max - originalValue) / (max - min)).toFixed(3);
+                    } else {
+                        newCell.textContent = 'N/A'; // Caso o critério não esteja selecionado
+                    }
                 } else {
                     newCell.textContent = 'N/A';
                 }
@@ -362,4 +383,115 @@ function showMoreResults(columnValues, articleYearIndex) {
 
     // Adiciona a nova tabela diretamente dentro do "resultsContainer"
     resultsContainer.appendChild(newTable);
+}
+
+// STEP 3 - Função para fazer o download da tabela de critérios
+function downloadCriteriaTable() {
+    // Títulos das colunas, incluindo os critérios inseridos no Step 1
+    const headers = [
+        "Article Title",
+        "Authors",
+        "Journal",
+        "Article Year",
+        localStorage.getItem("criterion1") || "Criterion 1",
+        localStorage.getItem("criterion2") || "Criterion 2",
+        localStorage.getItem("criterion3") || "Criterion 3",
+        localStorage.getItem("criterion4") || "",
+        localStorage.getItem("criterion5") || ""
+    ].filter(Boolean); // Remove colunas vazias para critérios inexistentes
+
+    // Dados dos artigos (para ilustrar, substitua pelo seu array de dados)
+    const articles = [
+        {
+            title: ["Here is the Article Title 1"],
+            authors: ["Authors names 1",],
+            journal: ["Journal Name 1"],
+            year: ["2024"],
+            criteria: ["Value 1", "Value 2", "Value 3", "Value 4?", "Value 5?"]
+        },
+        // ... adicionar outros artigos conforme necessário
+    ];
+
+    // Construir as linhas do CSV
+    const rows = [headers.join(",")];
+    articles.forEach(article => {
+        const row = [
+            article.title,
+            article.authors[0] || "",  // Primeiro autor
+            article.journal,
+            article.year,
+            ...(article.criteria.slice(0, 5)) // Garantir no máximo 5 critérios
+        ];
+        rows.push(row.join(","));
+    });
+
+    // Criar o Blob do CSV
+    const csvContent = rows.join("\n");
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+
+    // Criar link para download
+    const downloadLink = document.createElement("a");
+    downloadLink.href = url;
+    downloadLink.setAttribute("download", "Criterias.csv");
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+}
+
+// STEP 4 - Função para construir a tabela de ranking
+function buildRankTable() {
+    const ahpTable = document.getElementById('ahpTable');
+    const weights = Array.from(ahpTable.rows[2].cells).map(cell => parseFloat(cell.innerText) || 0); 
+
+    const resultsTable = document.getElementById('resultsWT');
+    
+    const rankTableDiv = document.getElementById('ranktable');
+    const rankTable = document.createElement('table');
+    rankTable.className = 'ranktable';
+    
+    const headerRow = resultsTable.rows[0].cloneNode(true);
+    const totalHeaderCell = document.createElement('th');
+    totalHeaderCell.innerText = 'Total';
+    headerRow.appendChild(totalHeaderCell);
+    rankTable.appendChild(headerRow);
+
+    for (let i = 1; i < resultsTable.rows.length; i++) {
+        const resultRow = resultsTable.rows[i];
+        const newRow = document.createElement('tr');
+        
+        for (let j = 0; j < 4; j++) {
+            const cell = resultRow.cells[j].cloneNode(true);
+            newRow.appendChild(cell);
+        }
+
+        let total = 0;
+        const multiplications = [
+            {col: 4, weight: weights[0]},
+            {col: 5, weight: weights[1]},
+            {col: 6, weight: weights[2]},
+            {col: 7, weight: weights[3]},
+            {col: 8, weight: weights[4]}
+        ];
+
+        multiplications.forEach(({col, weight}, index) => {
+            const cell = resultRow.cells[col];
+            const value = parseFloat(cell.innerText) || 0;
+            const result = value * weight;
+            total += result;
+
+            const newCell = document.createElement('td');
+            newCell.innerText = result.toFixed(2);
+            newRow.appendChild(newCell);
+        });
+
+        const totalCell = document.createElement('td');
+        totalCell.innerText = total.toFixed(2);
+        newRow.appendChild(totalCell);
+
+        rankTable.appendChild(newRow); 
+    }
+
+    rankTableDiv.innerHTML = '';
+    rankTableDiv.appendChild(rankTable);
 }
