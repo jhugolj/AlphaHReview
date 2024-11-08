@@ -155,7 +155,7 @@ document.getElementById('pairwiseBtn').addEventListener('click', function() {
     });
     
     var consistencyRatio = calculateConsistencyRatio(pairwiseMatrix, priorities);
-    var consistencyMessage = consistencyRatio <= 0.1 ? '<strong>Judgments ARE CONSISTENT. You can continue to the next step</strong>' : '<strong>The judgments are INCONSISTENT. Please REVIEW your comparisons.</strong>';
+    var consistencyMessage = consistencyRatio <= 0.1 ? '<strong>Judgments ARE CONSISTENT. You can SAVE COMPARISON and continue to the next step</strong>' : '<strong>The judgments are INCONSISTENT. Please REVIEW your comparisons before saving.</strong>';
     var consistencyMessageClass = consistencyRatio <= 0.1 ? 'consistent' : 'inconsistent';
 
     var consistencyLi = document.createElement('li');
@@ -187,6 +187,8 @@ function calculateConsistencyRatio(matrix, priorities) {
     };
     return consistencyIndex / randomIndex[n];
 }
+
+
 
 // STEP 3 - Função para processar e carregar o arquivo
 function processFile() {
