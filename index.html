@@ -1,13 +1,16 @@
 <!DOCTYPE html>
-<html lang="en" description="AlphaHReview Methodology">
-<head>
+<html lang="en">
 
+<head>
     <title>AlphaHReview Methodology</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-           
+    <meta name="description" content="AlphaHReview Methodology">
+    <meta name="keywords" content="Systematic Literature Review, AHP">
+    <script type="module" src="js/main.js" defer></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <header>
         <h1 id="title">AlphaHReview Methodology</h1>
@@ -16,57 +19,77 @@
 
     <div class="campo justificado">
         <p>
-            This methodology was developed with the aim of prioritizing publication selection criteria and exposing alternatives to improve the systematic literature review method. The AHP tool is used as a methodology to classify the quality criteria of the most relevant publications for the researched topic. Furthermore, the Weitendorf ratios was used to consider and classify the most relevant publications for the researched topic.
+            This methodology was developed with the aim of prioritizing publication selection criteria and exposing
+            alternatives to improve the systematic literature review method. The AHP tool is used as a methodology
+            to classify the quality criteria of the most relevant publications for the researched topic.
+            Furthermore, the Weitendorf ratios was used to consider and classify the most relevant publications for
+            the researched topic.
         </p>
     </div>
+
     <hr>
+
     <form id="criteriaForm">
-    <div class="campo">
-        <h3><strong>STEP 1 - Define the Criteria</strong></h3>
-        <p>Type the names of the criteria to be used in your search in the text boxes.</p>
-        <span class="small-text">(You can use 3 to 5 criteria).</span>
-        <div class="campo" id="buttons">
-            <div class="campo" id="criteriaInputs">
-                <!-- Initial input boxes will be added here -->
-                <div class="checked">
-                    <label for="criteria1"><strong>Criterion 1</strong></label>
-                    <input class="criteria" type="text" name="criteria1" id="criteria1" placeholder="Impact Factor" required>
+        <div class="campo">
+            <h3><strong>STEP 1 - Define the Criteria</strong></h3>
+            <p>Type the names of the criteria to be used in your search in the text boxes.</p>
+            <span class="small-text">(You can use 3 to 5 criteria).</span>
+            <div class="campo" id="buttons">
+                <div class="campo" id="criteriaInputs">
+                    <!-- Initial input boxes will be added here -->
+                    <div class="checked">
+                        <label for="criteria1"><strong>Criterion 1</strong></label>
+                        <input class="criteria" type="text" name="criteria1" id="criteria1" placeholder="Impact Factor"
+                            required>
+                    </div>
+                    <div class="checked">
+                        <label for="criteria2"><strong>Criterion 2</strong></label>
+                        <input class="criteria" type="text" name="criteria2" id="criteria2" placeholder="Citations"
+                            required>
+                    </div>
+                    <div class="checked">
+                        <label for="criteria3"><strong>Criterion 3</strong></label>
+                        <input class="criteria" type="text" name="criteria3" id="criteria3"
+                            placeholder="Publication Year" required>
+                    </div>
                 </div>
-                <div class="checked">
-                    <label for="criteria2"><strong>Criterion 2</strong></label>
-                    <input class="criteria" type="text" name="criteria2" id="criteria2" placeholder="Citations" required>
-                </div>
-                <div class="checked">
-                    <label for="criteria3"><strong>Criterion 3</strong></label>
-                    <input class="criteria" type="text" name="criteria3" id="criteria3" placeholder="Publication Year" required>
-                </div>
+                <button type="button" id="addCriteriaBtn" class="button">Add Criteria</button>
+                <button type="button" id="removeCriteriaBtn" class="button">Remove Criteria</button>
             </div>
-            <button type="button" id="addCriteriaBtn" class="button">Add Criteria</button>&nbsp;
-            <button type="button" id="removeCriteriaBtn" class="button">Remove Criteria</button>&nbsp;&nbsp;&nbsp;
+            <button type="submit" class="stepbutton">Submit</button>
         </div>
-        <button type="submit" class="stepbutton">Submit</button>
-    </div>
-</form>
-      
-       <hr>
+    </form>
+
+    <hr>
 
     <div class="campo">
         <section id="step2">
             <h3><strong>STEP 2 - Pairwise Comparison</strong></h3>
-            <p>Using the AHP methodology, perform a pairwise comparison between the selected criteria.<br>
-                <b>2.1 - (Columns 1 and 2):</b> Compare each pair of elements and provide an ordinal preference judgment (preference dominance);<br>
+            <p>
+                Using the AHP methodology, perform a pairwise comparison between the selected criteria.<br>
+                <b>2.1 - (Columns 1 and 2):</b> Compare each pair of elements and provide an ordinal preference
+                judgment (preference dominance);<br />
                 <b>2.2 - (Columns 3 and 4):</b> Define the weights of the priority criteria*.
             </p>
-            <span class="small-text"><b><i>*AHP Scale:</b></i> <b>1</b> - Equal Importance, <b>3</b> - Moderate Importance, <b>5</b> - Strong Importance, <b>7</b> - Very Strong Importance, <b>9</b> - Extreme Importance, (<u>2, 4, 6 and 8 values in-between</u>).</span>
+            <span class="small-text">
+                <b><i>*AHP Scale:</i></b> <b>1</b> - Equal Importance, <b>3</b> - Moderate Importance, <b>5</b> -
+                Strong Importance, <b>7</b> - Very Strong Importance, <b>9</b> - Extreme Importance, (<u>2, 4, 6 and 8
+                    values in-between</u>).
+            </span>
             <div id="selectedCriteria"></div>
-            <div class="campo" id="comparisonContainer" style="display:none;">
+            <div class="campo" id="comparisonContainer" style="display: none">
                 <h3><strong>Pairwise Comparison Matrix</strong></h3>
                 <form id="comparisonForm">
                     <table id="table-comparison" class="table-comparison">
                         <thead>
                             <tr>
-                                <th colspan="2">COMPARISON OF CRITERIA<br> (select the most important)</th>
-                                <th colspan="2"><strong>Assessment<br></strong> JUDGMENT- How much is more important?</th>
+                                <th colspan="2">
+                                    COMPARISON OF CRITERIA<br>
+                                    (select the most important)
+                                </th>
+                                <th colspan="2">
+                                    <strong>Assessment<br></strong> JUDGMENT- How much is more important?
+                                </th>
                             </tr>
                             <tr>
                                 <th>CRITERIA X</th>
@@ -79,102 +102,103 @@
                             <!-- As linhas da tabela serão geradas dinamicamente aqui -->
                         </tbody>
                     </table>
-    <p style="align-self: center;">For the same Weights just Click Here!</p>
+                    <p style="align-self: center">For the same Weights just Click Here!</p>
                     <button class="stepbutton" id="pairwiseBtn" type="button">Pairwise Comparison</button>
                 </form>
             </div>
-            <div class="campo" id="resultsContainer" style="display:none;">
+            <div class="campo" id="resultsContainer" style="display: none">
                 <h3><strong>Calculated Weights</strong></h3>
                 <ul id="calculatedWeights"></ul>
             </div>
         </section>
         <button type="submit" class="stepbutton">Save Comparison</button>
     </div>
-    
+
     <hr>
-    
+
     <div class="campo">
         <section id="step3">
-            
             <h3><strong>STEP 3 - Criteria Analysis</strong></h3>
             <p>In this field, the analysis and classification of the criteria will be carried out.</p>
-            <div class="campo"><p><strong>3.1 - Download the criteria table:</strong></p>
-                <button class="download-btn" onclick="downloadCriteriaTable()">Download Criteria Table</button>
+            <p><strong>3.1 - Download the criteria table:</strong></p>
+            <button class="download-btn" id="downloadCriteriaBtn">Download Criteria Table</button>
             <p><strong>3.2 - Criteria Analysis</strong></p>
             <section id="step-3.2">
-                <input type="file" id="uploadFile" class="uploadFile" accept=".odt, .xls, .xlsx, .csv" title="Select File">
-                <button class="button" onclick="processFile()">Load data</button>
-                <div id="loading" style="display:none;"><strong>loading...</strong></div></div>
-    
-                <!-- Tabela para entrada de pesos dos critérios -->
-                <div class="table-container">
-                    <h3>AHP Results</h3>
-                    <p><strong>Enter the results obtained in STEP 3 - Pairwise Comparison</strong></p>
-                    <table id="ahpTable" class="ahp-table">
-                        <tr>
-                            <th>Criteria 1</th>
-                            <th>Criteria 2</th>
-                            <th>Criteria 3</th>
-                            <th>Criteria 4</th>
-                            <th>Criteria 5</th>
-                        </tr>
-                        <tr class="gray-row">
-                            <!-- Os nomes dos critérios serão preenchidos aqui dinamicamente -->
-                            <td>waiting for criterion name</td>
-                            <td>waiting for criterion name</td>
-                            <td>waiting for criterion name</td>
-                            <td>waiting for criterion name</td>
-                            <td>waiting for criterion name</td>
-                        </tr>
-                        <tr>
-                            <!-- Os valores dos critérios serão preenchidos aqui dinamicamente -->
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select id="criteria1Type" required>
-                                    <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option>
-                                    <option value="minimum" style="text-align: center;">Minimum</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="criteria2Type" required>
-                                    <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option>
-                                    <option value="minimum" style="text-align: center;">Minimum</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="criteria3Type" required>
-                                    <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option>
-                                    <option value="minimum" style="text-align: center;">Minimum</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="criteria4Type">
-                                    <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option>
-                                    <option value="minimum" style="text-align: center;">Minimum</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="criteria5Type">
-                                    <option disabled selected>Select Optimization Goal</option>
-                                    <option value="maximum" style="text-align: center;">Maximum</option>
-                                    <option value="minimum" style="text-align: center;">Minimum</option>
-                                </select>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <hr>
-                <div>
+                <input type="file" id="uploadFile" class="uploadFile" accept=".odt, .xls, .xlsx, .csv"
+                    title="Select File">
+                <button class="button" id="fileProcessBtn">Load data</button>
+                <div id="loading" style="display: none"><strong>loading...</strong></div>
+            </section>
+
+            <!-- Tabela para entrada de pesos dos critérios -->
+            <div class="table-container">
+                <h3>AHP Results</h3>
+                <p><strong>Enter the results obtained in STEP 3 - Pairwise Comparison</strong></p>
+                <table id="ahpTable" class="ahp-table">
+                    <tr>
+                        <th>Criteria 1</th>
+                        <th>Criteria 2</th>
+                        <th>Criteria 3</th>
+                        <th>Criteria 4</th>
+                        <th>Criteria 5</th>
+                    </tr>
+                    <tr class="gray-row">
+                        <!-- Os nomes dos critérios serão preenchidos aqui dinamicamente -->
+                        <td>waiting for criterion name</td>
+                        <td>waiting for criterion name</td>
+                        <td>waiting for criterion name</td>
+                        <td>waiting for criterion name</td>
+                        <td>waiting for criterion name</td>
+                    </tr>
+                    <tr>
+                        <!-- Os valores dos critérios serão preenchidos aqui dinamicamente -->
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <select id="criteria1Type" required>
+                                <option disabled selected>Select Optimization Goal</option>
+                                <option value="maximum" style="text-align: center">Maximum</option>
+                                <option value="minimum" style="text-align: center">Minimum</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="criteria2Type" required>
+                                <option disabled selected>Select Optimization Goal</option>
+                                <option value="maximum" style="text-align: center">Maximum</option>
+                                <option value="minimum" style="text-align: center">Minimum</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="criteria3Type" required>
+                                <option disabled selected>Select Optimization Goal</option>
+                                <option value="maximum" style="text-align: center">Maximum</option>
+                                <option value="minimum" style="text-align: center">Minimum</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="criteria4Type">
+                                <option disabled selected>Select Optimization Goal</option>
+                                <option value="maximum" style="text-align: center">Maximum</option>
+                                <option value="minimum" style="text-align: center">Minimum</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select id="criteria5Type">
+                                <option disabled selected>Select Optimization Goal</option>
+                                <option value="maximum" style="text-align: center">Maximum</option>
+                                <option value="minimum" style="text-align: center">Minimum</option>
+                            </select>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <hr>
+            <div>
                 <!-- Tabela dos resultados -->
                 <h3>Criteria Table</h3>
                 <table id="resultsTable">
@@ -182,36 +206,35 @@
                     <!-- Tabela será preenchida dinamicamente -->
                 </table>
                 <table id="calculatedResults"></table>
-                
             </div>
             <hr>
             <h3>Normalized Criteria Table</h3>
             <table id="resultswT">
-             <!-- Tabela será preenchida dinamicamente -->
+                <!-- Tabela será preenchida dinamicamente -->
             </table>
-            
-            <div class="campo" id="resultsWT" style="display:none;"></div>
-            </section>
 
+            <div class="campo" id="resultsWT" style="display: none"></div>
         </section>
     </div>
+
     <hr>
+
     <div class="campo">
         <section id="step4">
-    <h3><strong>STEP 4 - Final Results</strong></h3>
-    <p>Show ranked results table here.</p>
-    <button id="buildRankTable" class="stepbutton" onclick="buildRankTable()">Build Rank Table</button>
-        <div id="ranktable" class="ranktable"></div>
-    <button id="finalButton" class="stepbutton">Download Results</button>
-</section>
+            <h3><strong>STEP 4 - Final Results</strong></h3>
+            <p>Show ranked results table here.</p>
+            <button id="buildRankTableBtn" class="stepbutton">Build Rank Table</button>
+            <div id="ranktable" class="ranktable"></div>
+            <button id="finalButton" class="stepbutton">Download Results</button>
+        </section>
     </div>
+
     <hr>
+
     <footer>
-    <p>This methodology¹ is proposed by: LEITE JUNIOR, J. H.; SETTI, D.; RESENDE, L M.</p>
-    <p>The application web is developed by LEITE JUNIOR, J. H. & FERREIRA DA LUZ, H. J.</p>
+        <p>This methodology¹ is proposed by: LEITE JUNIOR, J. H.; SETTI, D.; RESENDE, L M.</p>
+        <p>The application web is developed by LEITE JUNIOR, J. H. & LUZ, H. J. F.</p>
     </footer>
-    <script src="scripts.js"></script>
-    
 </body>
 
 </html>
