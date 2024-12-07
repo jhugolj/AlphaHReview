@@ -8,6 +8,6 @@ document.getElementById('addCriteriaBtn').addEventListener('click', addCriteriaI
 document.getElementById('removeCriteriaBtn').addEventListener('click', removeCriteriaInput)
 document.getElementById('criteriaForm').addEventListener('submit', submitForm)
 document.getElementById('pairwiseBtn').addEventListener('click', pairwiseCalculation)
-document.getElementById('fileProcessBtn').addEventListener('change', processFile)
+document.getElementById('fileProcessBtn').addEventListener('click', processFile)
 document.getElementById('downloadCriteriaBtn').addEventListener('click', downloadCriteriaTable)
 document.getElementById('buildRankTableBtn').addEventListener('click', buildRankTable)
