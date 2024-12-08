@@ -65,32 +65,21 @@
     <div class="campo">
         <section id="step2">
             <h3><strong>STEP 2 - Pairwise Comparison</strong></h3>
-            <p>
-                Using the AHP methodology, perform a pairwise comparison between the selected criteria.<br>
-                <b>2.1 - (Columns 1 and 2):</b> Compare each pair of elements and provide an ordinal preference
-                judgment (preference dominance);<br />
+            <div class="campo"><p style="text-align: center">Using the AHP methodology, perform a pairwise comparison between the selected criteria.</p><br>
+            <p style="margin-left: 35ch"><b>2.1 - (Columns 1 and 2):</b> Compare each pair of elements and provide an ordinal preference judgment (preference dominance);<br>
                 <b>2.2 - (Columns 3 and 4):</b> Define the weights of the priority criteria*.
             </p>
-            <span class="small-text">
-                <b><i>*AHP Scale:</i></b> <b>1</b> - Equal Importance, <b>3</b> - Moderate Importance, <b>5</b> -
-                Strong Importance, <b>7</b> - Very Strong Importance, <b>9</b> - Extreme Importance, (<u>2, 4, 6 and 8
-                    values in-between</u>).
-            </span>
+            <span class="small-text"><b><i>*AHP Scale:</b></i> <b>1</b> - Equal Importance, <b>3</b> - Moderate Importance, <b>5</b> - Strong Importance, <b>7</b> - Very Strong Importance, <b>9</b> - Extreme Importance, (<u>2, 4, 6 and 8 values in-between</u>).</span>
+            </div>
             <div id="selectedCriteria"></div>
-            <div class="campo" id="comparisonContainer" style="display: none">
+            <div class="campo" id="comparisonContainer" style="display:none;">
                 <h3><strong>Pairwise Comparison Matrix</strong></h3>
                 <form id="comparisonForm">
                     <table id="table-comparison" class="table-comparison">
                         <thead>
                             <tr>
-                                <th colspan="2">
-                                    2.1 - COMPARISON OF CRITERIA<br>
-                                    (select the most important)
-                                </th>
-                                <th colspan="2">
-                                    <strong>2.2 - ASSESSMENT</strong><br>
-                                    (JUDGMENT- How much is more important?)
-                                </th>
+                                <th colspan="2">2.1 - COMPARISON OF CRITERIA<br> (select the most important)</th>
+                                <th colspan="2"><strong>2.2 - ASSESSMENT<br></strong> JUDGMENT- How much is more important?</th>
                             </tr>
                             <tr>
                                 <th>CRITERIA X</th>
@@ -103,18 +92,18 @@
                             <!-- As linhas da tabela serão geradas dinamicamente aqui -->
                         </tbody>
                     </table>
-                    <p class="small-text" style="text-align: center;"><b>For equal values, just click the button below!</b></p>
-                    <button class="stepbutton" id="pairwiseBtn" type="button">Pairwise Comparison</button>
+    <div class="campo">
+    <p class="small-text" style="text-align: center;"><b>For equal values, just click the button below!</b></p>
+                    <button class="stepbutton" id="pairwiseBtn" type="button">Pairwise Comparison</button></div>
                 </form>
             </div>
-            <div class="campo" id="resultsContainer" style="display: none">
+            <div class="campo" id="resultsContainer" style="display:none;">
                 <h3><strong>Calculated Weights</strong></h3>
                 <ul id="calculatedWeights"></ul>
             </div>
         </section>
-        <button type="submit" class="stepbutton">Save Comparison</button>
+        <button type="submit" class="stepbutton" id="populateCriteriaValues">Save Comparison</button>
     </div>
-
     <hr>
 
     <div class="campo">
