@@ -99,7 +99,7 @@ export function processFile() {
                       if (criteriaType === "minimum") {
                           adjustedMin = min; // Não aplica o ajuste de 0,99 para minimum
                       } else {
-                          adjustedMin = min * 0.999; // Aplica o ajuste de 0,1% do valor mínimo para maximização
+                          adjustedMin = min;
                       }
               
                       minCell.textContent = adjustedMin.toFixed(3);
